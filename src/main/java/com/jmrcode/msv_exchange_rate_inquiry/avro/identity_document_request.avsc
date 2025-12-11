@@ -1,0 +1,22 @@
+{
+  "type": "record",
+  "name": "IdentityDocumentRequest",
+  "namespace": "com.jmrcode.avro",
+  "fields": [
+    {
+      "name": "requestId",
+      "type": "string",
+      "doc": "Id de la solicitud"
+    },
+    {
+      "name": "documenttype",
+      "type": "string",
+      "doc": "Tipo de documento de identidad"
+    },
+    {
+      "name": "documentnumber",
+      "type": "string",
+      "doc": "Número de documento de identidad"
+    }
+  ]
+}

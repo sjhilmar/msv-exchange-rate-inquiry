@@ -1,0 +1,74 @@
+{
+  "type": "record",
+  "name": "ExchangeRateResponse",
+  "namespace": "com.jmrcode.avro",
+  "fields": [
+    {
+      "name": "identityDocument",
+        "type": {
+          "type": "record",
+          "name": "IdentityDocument",
+          "fields": [
+            {
+              "name": "requestId",
+              "type": "string",
+              "doc": "Id de la solicitud"
+            },
+            {
+              "name": "documenttype",
+              "type": "string",
+              "doc": "Tipo de documento de identidad"
+            },
+            {
+              "name": "documentnumber",
+              "type": "string",
+              "doc": "Número de documento de identidad"
+            }
+          ]
+        }
+    },
+    {
+      "name": "exchangeRate",
+        "type": {
+          "type": "record",
+          "name": "ExchangeRate",
+          "fields": [
+            {
+              "name": "date",
+              "type": {
+                "type": "int",
+                "logicalType": "date"
+              },
+              "doc": "Fecha de la consulta, representar como yyyy-MM-dd al presentar"
+            },
+            {
+              "name": "sunat",
+              "type": ["null","double"],
+              "default": null,
+              "doc": "Tipo de cambio SUNAT (decimal)"
+            },
+            {
+              "name": "purchase",
+              "type": ["null","double"],
+              "default": null,
+              "doc": "Valor de compra de dólares (decimal)"
+            },
+            {
+              "name": "sale",
+              "type": ["null","double"],
+              "default": null,
+              "doc": "Valor de venta de dólares (decimal)"
+            },
+            {
+              "name": "consultationdate",
+              "type": {
+                "type": "long",
+                "logicalType": "timestamp-millis"
+              },
+              "doc": "Fecha y hora de la consulta, representar como yyyy-MM-dd HH:mm:ss al presentar"
+            }
+          ]
+        }
+    }
+  ]
+}

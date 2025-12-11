@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: msv-exchange-rate-inquiry
+  kafka:
+    consumer:
+      group-id: ${APP_CONSUMER_GROUP:rxjava-consumer-group}
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+  app:
+    kafka:
+      topic: ${APP_TOPIC:user-events}
+      bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9092}
+      schema-registry-url: ${SCHEMA_REGISTRY:http://localhost:8081}
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+  consumer:
+    bootstrap-servers: ${app.kafka.bootstrap-servers}
+    schema-registry-url: ${app.kafka.schema-registry-url}
+    group-id: ${spring.kafka.consumer.group-id}
+external:
+  api:
+    base-url: "https://free.e-api.net.pe/tipo-cambio"
+    timeout: 5000
+    max-in-memory-bytes_size: 16777216 # 16MB
